@@ -60,8 +60,11 @@ public class ChoiceWindow {
     void fillList () {
         list.removeAll(list);
         String a="F(x)=x*x-2.0";
-       // String b="F(x)=(2.0+4.0)";
-        list.addAll(a);
+        String b="F(x)=((x + 1.0) * x - 2.0) * x - 1.0";
+        String c="F(x)=sin(x) - cos(x + 1.0)";
+        String d="F(x)=exp(x) - 4.0 * x";
+        String e="F(x)=sin(exp(-x*x)) - 0.5";
+        list.addAll(a,b,c,d,e);
         function.getItems().addAll(list);
     }
 
