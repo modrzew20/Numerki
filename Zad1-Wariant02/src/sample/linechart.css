@@ -1,0 +1,12 @@
+.chart-series-line{
+
+
+}
+
+.default-color0.chart-series-line{-fx-stroke: #29B6F6;
+    -fx-stroke-width: 3px;
+}
+.default-color1.chart-series-line{-fx-stroke: #37a223;
+    -fx-stroke-width: 8px;
+
+}

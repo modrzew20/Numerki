@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ChoiceWindow">
+   <children>
+      <ChoiceBox fx:id="epsilon" layoutX="53.0" layoutY="164.0" prefWidth="150.0" />
+      <Label fx:id="l1" layoutX="53.0" layoutY="131.0" text="Błąd " />
+      <MenuButton fx:id="option" layoutX="247.0" layoutY="75.0" mnemonicParsing="false" text="Opcja">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#byepsilon" text="Błąd" />
+          <MenuItem mnemonicParsing="false" onAction="#byiteration" text="Iteracje" />
+        </items>
+      </MenuButton>
+      <Label fx:id="l2" layoutX="344.0" layoutY="131.0" text="Ilość iteracji" />
+      <TextField fx:id="iteriation" layoutX="344.0" layoutY="164.0" />
+      <ChoiceBox fx:id="function" layoutX="203.0" layoutY="38.0" prefWidth="150.0" />
+      <TextField fx:id="eps" layoutX="54.0" layoutY="242.0" />
+      <Label fx:id="l3" layoutX="53.0" layoutY="213.0" text="Dokładność" />
+      <Label layoutX="276.0" layoutY="291.0" text="Przedział" />
+      <TextField fx:id="to" layoutX="343.0" layoutY="321.0" prefHeight="26.0" prefWidth="63.0" />
+      <TextField fx:id="from" layoutX="215.0" layoutY="320.0" prefHeight="26.0" prefWidth="63.0" />
+      <Label layoutX="183.0" layoutY="324.0" text="Od:" />
+      <Label layoutX="310.0" layoutY="325.0" text="Do:" />
+      <Button fx:id="count" layoutX="493.0" layoutY="347.0" mnemonicParsing="false" onAction="#countfunction" text="Policz" />
+      <Button mnemonicParsing="false" onAction="#reload" text="Reset" />
+      <Label layoutX="201.0" layoutY="17.0" text="Wybierz funkcje" />
+   </children>
+</AnchorPane>
