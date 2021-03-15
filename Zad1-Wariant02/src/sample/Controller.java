@@ -5,7 +5,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+
 
 
 public class Controller {
@@ -21,7 +21,7 @@ public class Controller {
         String x;
         series.setName("F(x)");
         lineChart.setCreateSymbols(false);
-        for(double i=0; i<=2 ;i+=0.01) {
+        for(double i=ChoiceWindow.od; i<=ChoiceWindow.dok ;i+=0.01) {
             x=String.format("%.2f", i);
             if(ChoiceWindow.funkcja=="F(x)=x*x-2.0")   series.getData().add(new XYChart.Data(x,functions.firstp(i)));
 
@@ -35,7 +35,7 @@ public class Controller {
         XYChart.Series series2 = new XYChart.Series();
         double i=0;
 
-        if(ChoiceWindow.funkcja=="F(x)=x*x-2.0") i=functions.first(ChoiceWindow.dokladnosc,ChoiceWindow.wariant);
+        if(ChoiceWindow.funkcja=="F(x)=x*x-2.0") i=functions.first(ChoiceWindow.dokladnosc,ChoiceWindow.wariant,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.op,ChoiceWindow.iteracje);
 
 
 

@@ -29,7 +29,7 @@ public class ChoiceWindow {
     public Label l2;
     public Label l3;
     public AnchorPane pane;
-    boolean op=true;
+    static boolean op=true;
 
     ObservableList list = FXCollections.observableArrayList();
     ObservableList listepsilon = FXCollections.observableArrayList();
@@ -86,7 +86,8 @@ public class ChoiceWindow {
 
 
     public static double dokladnosc;
-    public double iteracje;
+    public static int iteracje;
+    public static double  od , dok ;
     public String opcjabledu;
     public static String funkcja;
     public static boolean wariant;
@@ -102,8 +103,11 @@ public class ChoiceWindow {
             if (opcjabledu == "|xn-xn-1|<E") wariant = true;
             else wariant = false;
         } else {
-             iteracje= Double.parseDouble(iteriation.getText());
+             iteracje= Integer.parseInt(iteriation.getText());
         }
+
+        od = Double.parseDouble(from.getText());
+        dok = Double.parseDouble(to.getText());
 
         Stage stage= new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
