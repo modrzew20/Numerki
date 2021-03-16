@@ -94,7 +94,10 @@ public class ChoiceWindow {
     public String opcjabledu;
     public static String funkcja;
 
-
+        //1 bledem
+        //2 iteracjami
+        //3 wariantem A
+        //4 wariantem B
     public void countfunction(ActionEvent actionEvent) throws IOException {
 
         funkcja = function.getValue();
