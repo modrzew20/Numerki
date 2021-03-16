@@ -10,3 +10,10 @@
     -fx-stroke-width: 8px;
 
 }
+
+.default-color0.chart-line-symbol{-fx-background-color: #29B6F6;
+
+}
+.default-color1.chart-line-symbol{-fx-background-color: #37a223;
+
+}

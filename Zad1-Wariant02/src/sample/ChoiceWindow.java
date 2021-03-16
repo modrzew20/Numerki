@@ -29,7 +29,8 @@ public class ChoiceWindow {
     public Label l2;
     public Label l3;
     public AnchorPane pane;
-    static boolean op=true;
+    byte whichOption=0;
+    static byte which=0;
 
     ObservableList list = FXCollections.observableArrayList();
     ObservableList listepsilon = FXCollections.observableArrayList();
@@ -75,15 +76,14 @@ public class ChoiceWindow {
         option.setVisible(false);
         l1.setVisible(true);
         l3.setVisible(true);
-        op=true;
-
+        whichOption=1;
     }
 
     public void byiteration(ActionEvent actionEvent) {
         iteriation.setVisible(true);
         option.setVisible(false);
         l2.setVisible(true);
-        op=false;
+        whichOption=2;
     }
 
 
@@ -93,18 +93,20 @@ public class ChoiceWindow {
     public static double  od , dok ;
     public String opcjabledu;
     public static String funkcja;
-    public static boolean wariant;
 
 
     public void countfunction(ActionEvent actionEvent) throws IOException {
 
         funkcja = function.getValue();
-
-        if (op) {
+        if (whichOption==1) {
             dokladnosc = Double.parseDouble(eps.getText());
             opcjabledu = epsilon.getValue();
-            if (opcjabledu == "|xn-xn-1|<E") wariant = true;
-            else wariant = false;
+            if (opcjabledu == "|xn-xn-1|<E") {
+                whichOption=3;
+            }
+            else {
+                whichOption=4;
+            }
         } else {
              iteracje= Integer.parseInt(iteriation.getText());
         }
@@ -112,13 +114,14 @@ public class ChoiceWindow {
         od = Double.parseDouble(from.getText());
         dok = Double.parseDouble(to.getText());
 
+        which=whichOption;
+        if(whichOption==3 || whichOption==4) whichOption = 1;
+        else whichOption = 2;
+
         Stage stage= new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         stage.setScene(new Scene(root, 800, 600));
         stage.show();
-
-
-
     }
 
     public void reload(ActionEvent actionEvent) throws IOException {
