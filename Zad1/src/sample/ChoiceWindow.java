@@ -121,6 +121,7 @@ public class ChoiceWindow {
 
     public void countfunction(ActionEvent actionEvent) throws IOException {
 
+        f();
         if (whichOption==1) {
             dokladnosc = Double.parseDouble(eps.getText());
             opcjabledu = epsilon.getValue();

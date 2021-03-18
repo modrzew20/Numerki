@@ -13,7 +13,5 @@ public class Wielomian extends Model {
     }
 
     @Override
-    public double doublederived(double x) {
-        return 2;
-    }
+    public double doublederived(double x) { return 2;}
 }

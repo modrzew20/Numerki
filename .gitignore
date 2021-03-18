@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+/Zad1/.idea/
+/Zad1/out/
