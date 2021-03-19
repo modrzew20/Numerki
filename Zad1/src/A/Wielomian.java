@@ -4,12 +4,12 @@ public class Wielomian extends Model {
 
     @Override
     public double pattern(double x) {
-        return x*x-2;
+        return x*x+ 5*x -3  ;
     }
 
     @Override
     public double derived(double x) {
-        return 2*x;
+        return 2*x +5;
     }
 
     @Override

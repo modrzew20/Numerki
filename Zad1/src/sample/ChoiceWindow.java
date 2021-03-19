@@ -20,12 +20,13 @@ public class ChoiceWindow {
     ObservableList list = FXCollections.observableArrayList();
     void fillList () {
         list.removeAll(list);
-        String a="F(x)=x*x-2.0";
-        String b="F(x)=((x + 1.0) * x - 2.0) * x - 1.0";
-        String c="F(x)=sin(x) - cos(x + 1.0)";
-        String d="F(x)=exp(x) - 4.0 * x";
-        String e="F(x)=sin(exp(-x*x)) - 0.5";
-        list.addAll(a,b,c,d,e);
+        String a="x*x+5*x-3";
+        String b="2*cos(x+1)";
+      //  String c="F(x)=sin(x) - cos(x + 1.0)";
+       // String d="F(x)=exp(x) - 4.0 * x";
+       // String e="F(x)=sin(exp(-x*x)) - 0.5";
+      ///  list.addAll(a,b,c,d,e);
+        list.addAll(a,b);
         function.getItems().addAll(list);
     }
 
@@ -112,7 +113,8 @@ public class ChoiceWindow {
 
     void f () {
         String funkcj=function.getValue();
-        if(funkcj=="F(x)=x*x-2.0") funkcja=1;
+        if(funkcj=="x*x+5*x-3") funkcja=1;
+        if(funkcj=="2*cos(x+1)") funkcja=2;
 
 
 
@@ -144,7 +146,7 @@ public class ChoiceWindow {
 
         Stage stage= new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 

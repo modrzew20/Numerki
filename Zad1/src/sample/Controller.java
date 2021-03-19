@@ -1,9 +1,6 @@
 package sample;
 
-import A.Afunctions;
-import A.Model;
-import A.WariantA;
-import A.Wielomian;
+import A.*;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -17,40 +14,45 @@ public class Controller {
     public LineChart lineChart;
     public NumberAxis y;
     public CategoryAxis x;
-    public Label result;
+    public Label result02;
+    public Label iter02;
+
 
 
     public void initialize() {
         XYChart.Series series = new XYChart.Series();
         String x;
-        series.setName("F(x) - WARIANT A");
+        series.setName("F(x)");
         lineChart.setCreateSymbols(false);
 
         Model m=null;
 
         for(double i=ChoiceWindow.od; i<=ChoiceWindow.dok ;i+=0.01) {
             x=String.format("%.2f", i);
-            if(ChoiceWindow.funkcja==1) {
-                m = new Wielomian();
-                series.getData().add(new XYChart.Data(x, m.pattern(i)));
-            }
+            if(ChoiceWindow.funkcja==1) { m = new Wielomian(); }
+            if(ChoiceWindow.funkcja==2) { m = new Trygonometryczna(); }
+            series.getData().add(new XYChart.Data(x, m.pattern(i)));
+
+
         }
 
         lineChart.getData().add(series);
 
 
+
         XYChart.Series series2 = new XYChart.Series();
-        double i=0;
 
-        Afunctions a = new Afunctions();
+        functions a = new functions();
+        double i=a.Newton(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
 
-        if(ChoiceWindow.funkcja==1) i=a.Newton(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
 
-        result.setText("Wynik:" + i);
         series2.setName("Wynik");
         x=String.format("%.2f", i);
         series2.getData().add(new XYChart.Data(x,0));
         lineChart.getData().add(series2);
+        iter02.setText(iter02.getText()+functions.it);
+        result02.setText(result02.getText() + i);
+
     }
 
 

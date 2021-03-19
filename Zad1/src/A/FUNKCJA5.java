@@ -1,18 +1,18 @@
 package A;
 
-public class Trygonometryczna extends Model{
+public class FUNKCJA5 extends Model{
     @Override
     public double pattern(double x) {
-        return 2*Math.cos(x+1);
+        return 0;
     }
 
     @Override
     public double derived(double x) {
-        return -2 * Math.sin(1+x);
+        return 0;
     }
 
     @Override
     public double doublederived(double x) {
-        return -2 * Math.cos(1+x);
+        return 0;
     }
 }
