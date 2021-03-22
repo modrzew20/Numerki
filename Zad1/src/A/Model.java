@@ -1,12 +1,8 @@
 package A;
 
-public abstract class Model {
+public interface Model {
 
-    public Model() {
-    }
-
-    public abstract double pattern(double x);
-    public abstract double derived(double x);
-    public abstract double doublederived(double x);
-
+    double pattern(double x);
+    double derived(double x);
+    double doublederived(double x);
 }
