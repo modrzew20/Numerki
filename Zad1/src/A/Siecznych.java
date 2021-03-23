@@ -7,7 +7,7 @@ public class Siecznych implements Wariant {
     static public int it = 0;
 
     @Override
-    public double compute(double epsilon, double x0, double x1, int iteration, byte way, byte whichfunction) {
+    public double compute(double epsilon, double x0, double x1, int iteration, byte way) {
 
         double x;
         do {

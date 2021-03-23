@@ -32,7 +32,7 @@ public class Controller {
         lineChart.getData().add(series);
 
         Siecznych siecznychMethod = new Siecznych();
-        double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
+        double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
         x = String.format("%.2f", i);
         putSinglePoint("2. Wynik metody Newtona", x, ChoiceWindow.m.pattern(i));
@@ -43,7 +43,7 @@ public class Controller {
         result02.setText(result02.getText() + i);
 
         Falsi falsiMethod = new Falsi();
-        i = falsiMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
+        i = falsiMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
         if(Falsi.validationCheck) {
             x=String.format("%.2f", i);

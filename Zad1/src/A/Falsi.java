@@ -8,7 +8,7 @@ public class Falsi implements Wariant{
     static public boolean validationCheck = true;
 
     @Override
-    public double compute(double epsilon, double section1, double section2, int iteration, byte way, byte whichfunction) {
+    public double compute(double epsilon, double section1, double section2, int iteration, byte way) {
 
 
         if(sign(ChoiceWindow.m.pattern(section1)) == sign(ChoiceWindow.m.pattern(section2))) validationCheck = false;

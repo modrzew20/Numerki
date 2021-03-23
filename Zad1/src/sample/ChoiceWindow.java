@@ -100,7 +100,6 @@ public class ChoiceWindow {
     l3.setVisible(false);
     }
 
-    public static byte funkcja;
     public static double dokladnosc;
     public static int iteracje;
     public static double  od , dok ;
