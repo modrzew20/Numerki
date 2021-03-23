@@ -23,8 +23,6 @@ public class Controller {
         series.setName("F(x)");
         lineChart.setCreateSymbols(false);
 
-
-
         for(double i=ChoiceWindow.od; i<=ChoiceWindow.dok ;i+=0.01) {
             x=String.format("%.2f", i);
             series.getData().add(new XYChart.Data(x, ChoiceWindow.m.pattern(i)));
@@ -34,7 +32,7 @@ public class Controller {
         Siecznych siecznychMethod = new Siecznych();
         double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
-        x = String.format("%.2f", i);
+        x = String.format("%.7f", i);
         putSinglePoint("2. Wynik metody Newtona", x, ChoiceWindow.m.pattern(i));
 
 
@@ -46,7 +44,7 @@ public class Controller {
         i = falsiMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
         if(Falsi.validationCheck) {
-            x=String.format("%.2f", i);
+            x=String.format("%.7f", i);
             putSinglePoint("3. Wynik metody Falsi", x, ChoiceWindow.m.pattern(i));
             iter03.setText(iter03.getText()+Falsi.it);
             result03.setText(result03.getText() + i);

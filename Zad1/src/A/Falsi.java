@@ -12,6 +12,7 @@ public class Falsi implements Wariant{
 
 
         if(sign(ChoiceWindow.m.pattern(section1)) == sign(ChoiceWindow.m.pattern(section2))) validationCheck = false;
+        else validationCheck = true;
 
         double a = section2;
         double b = section1;

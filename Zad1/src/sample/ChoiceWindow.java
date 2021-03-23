@@ -1,8 +1,6 @@
 package sample;
 
-import A.Model;
-import A.Trygonometryczna;
-import A.Wielomian;
+import A.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,11 +23,10 @@ public class ChoiceWindow {
         list.removeAll(list);
         String a="x*x+5*x-3";
         String b="2*cos(x+1)";
-      //  String c="F(x)=sin(x) - cos(x + 1.0)";
-       // String d="F(x)=exp(x) - 4.0 * x";
-       // String e="F(x)=sin(exp(-x*x)) - 0.5";
-      ///  list.addAll(a,b,c,d,e);
-        list.addAll(a,b);
+        String c="2^x-12";
+        String d="2*cos((x*x+5*x+3)+1)";
+        String e="2^(x*x+5*x+3)-12";
+        list.addAll(a, b, c, d, e);
         function.getItems().addAll(list);
     }
 
@@ -111,6 +108,9 @@ public class ChoiceWindow {
         String funkcj=function.getValue();
         if(funkcj=="x*x+5*x-3") m = new Wielomian();
         if(funkcj=="2*cos(x+1)") m = new Trygonometryczna();
+        if(funkcj=="2^x-12") m = new Wykladnicza();
+        if(funkcj=="2*cos((x*x+5*x+3)+1)") m = new Funkcja1();
+        if(funkcj=="2^(x*x+5*x+3)-12") m = new Funkcja2();
     }
 
     public void countfunction(ActionEvent actionEvent) throws IOException {

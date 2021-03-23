@@ -1,7 +1,10 @@
-Zeby dodac nowa funkcje
+Aby dodać nową funkcje:
+
 -----------
-ChoiceWindow.java
-1. dodac do listy w gui
-2. dodac do funkcji f()
+1. Tworzymy nową klasę implementującej interfejs Model
 -----------
-3. stworzenie nowej klasy ze wzorem extend Model
+W ChoiceWindow.java
+2. Dodajemy tekstowy wzór do listy w gui
+3. Dodajemy tekstowy wzór do funkcji f()
+-----------
+
