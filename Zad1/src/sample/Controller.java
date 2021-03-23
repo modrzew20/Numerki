@@ -43,7 +43,7 @@ public class Controller {
         XYChart.Series series2 = new XYChart.Series();
 
         functions a = new functions();
-        double i=a.Newton(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
+        double i=a.siecznych(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
 
 
         series2.setName("Wynik");
