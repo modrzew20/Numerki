@@ -11,8 +11,8 @@ public class Falsi implements Wariant{
         if (whichfunction == 1) m = new Wielomian();
         if (whichfunction == 2) m = new Trygonometryczna();
         if (whichfunction == 3) m = new Wykladnicza();
-        //if(whichfunction==4) m = new ();
-        // if(whichfunction==5) m = new ();
+        if(whichfunction==4) m = new FUNKCJA4();
+        if(whichfunction==5) m = new FUNKCJA5();
 
         if(sign(m.pattern(section1)) == sign(m.pattern(section2))) validationCheck = false;
 

@@ -11,12 +11,10 @@ public class Siecznych implements Wariant {
         if(whichfunction==1) m = new Wielomian();
         if(whichfunction==2) m = new Trygonometryczna();
         if(whichfunction==3) m = new Wykladnicza();
-        //if(whichfunction==4) m = new ();
-        // if(whichfunction==5) m = new ();
+        if(whichfunction==4) m = new FUNKCJA4();
+        if(whichfunction==5) m = new FUNKCJA5();
 
         double x;
-
-        double px;
         do {
             x=x1-((m.pattern(x1)*(x1-x0))/(m.pattern(x1)-m.pattern(x0)));
 
