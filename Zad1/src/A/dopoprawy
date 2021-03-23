@@ -1,5 +1,8 @@
 1. Wszędzie semantyka - sprawdzenie
-2. Sparametryzowanie wszystkich powtórzonych fragmentów kodu w funkcje
-3. Dodanie porównania dokładności
 4. Dodanie kolejnych funkcji
 5. Spisanie co trzeba zrobić w kodzie żeby dodać nową funkcje
+
+Aby dodać nową funkcję:
+
+1. tworzymy nową klasę implementującą klase Model
+2.
