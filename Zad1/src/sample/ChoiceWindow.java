@@ -1,5 +1,8 @@
 package sample;
 
+import A.Model;
+import A.Trygonometryczna;
+import A.Wielomian;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -102,11 +105,13 @@ public class ChoiceWindow {
     public static int iteracje;
     public static double  od , dok ;
     public String opcjabledu;
+    public static Model m;
+
 
     void f () {
         String funkcj=function.getValue();
-        if(funkcj=="x*x+5*x-3") funkcja=1;
-        if(funkcj=="2*cos(x+1)") funkcja=2;
+        if(funkcj=="x*x+5*x-3") m = new Wielomian();
+        if(funkcj=="2*cos(x+1)") m = new Trygonometryczna();
     }
 
     public void countfunction(ActionEvent actionEvent) throws IOException {

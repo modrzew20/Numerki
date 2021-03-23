@@ -23,17 +23,11 @@ public class Controller {
         series.setName("F(x)");
         lineChart.setCreateSymbols(false);
 
-        Model m=null;
-        if(ChoiceWindow.funkcja==1) {
-            m = new Wielomian();
-        }
-        if(ChoiceWindow.funkcja==2) {
-            m = new Trygonometryczna();
-        }
+
 
         for(double i=ChoiceWindow.od; i<=ChoiceWindow.dok ;i+=0.01) {
             x=String.format("%.2f", i);
-            series.getData().add(new XYChart.Data(x, m.pattern(i)));
+            series.getData().add(new XYChart.Data(x, ChoiceWindow.m.pattern(i)));
         }
         lineChart.getData().add(series);
 
@@ -41,7 +35,7 @@ public class Controller {
         double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
 
         x = String.format("%.2f", i);
-        putSinglePoint("2. Wynik metody Newtona", x, m.pattern(i));
+        putSinglePoint("2. Wynik metody Newtona", x, ChoiceWindow.m.pattern(i));
 
 
 
@@ -53,7 +47,7 @@ public class Controller {
 
         if(Falsi.validationCheck) {
             x=String.format("%.2f", i);
-            putSinglePoint("3. Wynik metody Falsi", x, m.pattern(i));
+            putSinglePoint("3. Wynik metody Falsi", x, ChoiceWindow.m.pattern(i));
             iter03.setText(iter03.getText()+Falsi.it);
             result03.setText(result03.getText() + i);
         } else {
