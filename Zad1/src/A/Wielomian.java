@@ -1,6 +1,6 @@
 package A;
 
-public class Wielomian extends Model {
+public class Wielomian implements Model {
 
     @Override
     public double pattern(double x) {

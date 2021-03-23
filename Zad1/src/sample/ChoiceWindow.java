@@ -63,14 +63,12 @@ public class ChoiceWindow {
         epsilon.getItems().addAll(listepsilon);
     }
 
-
     //###########################################################################################
     // pola od (kolejno) ilosci iteracji , przedział x2, dokładnosc
     public TextField iteriation;
     public TextField to;
     public TextField from;
     public TextField eps;
-
 
     //###########################################################################################
     // sposob
@@ -81,15 +79,12 @@ public class ChoiceWindow {
     byte whichOption=0;
     static byte which=0;
 
-
     //###########################################################################################
     public Button count;
     public Label l1;
     public Label l2;
     public Label l3;
     public AnchorPane pane;
-
-
 
     public void initialize() {
     fillList();
@@ -100,8 +95,6 @@ public class ChoiceWindow {
     l1.setVisible(false);
     l2.setVisible(false);
     l3.setVisible(false);
-
-
     }
 
     public static byte funkcja;
@@ -110,19 +103,13 @@ public class ChoiceWindow {
     public static double  od , dok ;
     public String opcjabledu;
 
-
     void f () {
         String funkcj=function.getValue();
         if(funkcj=="x*x+5*x-3") funkcja=1;
         if(funkcj=="2*cos(x+1)") funkcja=2;
-
-
-
     }
 
-
     public void countfunction(ActionEvent actionEvent) throws IOException {
-
         f();
         if (whichOption==1) {
             dokladnosc = Double.parseDouble(eps.getText());
@@ -149,7 +136,6 @@ public class ChoiceWindow {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 
     public void reload(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ChoiceWindow.fxml"));

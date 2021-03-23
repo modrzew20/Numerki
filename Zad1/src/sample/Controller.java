@@ -7,17 +7,15 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 
-
-
 public class Controller {
 
     public LineChart lineChart;
     public NumberAxis y;
     public CategoryAxis x;
     public Label result02;
+    public Label result03;
     public Label iter02;
-
-
+    public Label iter03;
 
     public void initialize() {
         XYChart.Series series = new XYChart.Series();
@@ -26,35 +24,48 @@ public class Controller {
         lineChart.setCreateSymbols(false);
 
         Model m=null;
+        if(ChoiceWindow.funkcja==1) {
+            m = new Wielomian();
+        }
+        if(ChoiceWindow.funkcja==2) {
+            m = new Trygonometryczna();
+        }
 
         for(double i=ChoiceWindow.od; i<=ChoiceWindow.dok ;i+=0.01) {
             x=String.format("%.2f", i);
-            if(ChoiceWindow.funkcja==1) { m = new Wielomian(); }
-            if(ChoiceWindow.funkcja==2) { m = new Trygonometryczna(); }
             series.getData().add(new XYChart.Data(x, m.pattern(i)));
-
-
         }
-
         lineChart.getData().add(series);
 
+        Siecznych siecznychMethod = new Siecznych();
+        double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
+
+        x = String.format("%.2f", i);
+        putSinglePoint("2. Wynik metody Newtona", x, m.pattern(i));
 
 
-        XYChart.Series series2 = new XYChart.Series();
 
-        functions a = new functions();
-        double i=a.siecznych(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
-
-
-        series2.setName("Wynik");
-        x=String.format("%.2f", i);
-        series2.getData().add(new XYChart.Data(x,0));
-        lineChart.getData().add(series2);
-        iter02.setText(iter02.getText()+functions.it);
+        iter02.setText(iter02.getText()+ Siecznych.it);
         result02.setText(result02.getText() + i);
 
+        Falsi falsiMethod = new Falsi();
+        i = falsiMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which, ChoiceWindow.funkcja);
+
+        if(Falsi.validationCheck) {
+            x=String.format("%.2f", i);
+            putSinglePoint("3. Wynik metody Falsi", x, m.pattern(i));
+            iter03.setText(iter03.getText()+Falsi.it);
+            result03.setText(result03.getText() + i);
+        } else {
+            iter03.setText(iter03.getText() + "Niespełniono założenia\no przeciwnych znakach\nfunkcji na krańcach\nbadanego przedziału");
+            result03.setText(result03.getText() + "Niespełniono założenia\no przeciwnych znakach\nfunkcji na krańcach\nbadanego przedziału");
+        }
     }
 
-
-
+    private void putSinglePoint(String nameOfThePoint, String x, double y) {
+        XYChart.Series series = new XYChart.Series();
+        series.setName(nameOfThePoint + " [" + x + " ; " + y + " ]");
+        series.getData().add(new XYChart.Data(x,y));
+        lineChart.getData().add(series);
+    }
 }

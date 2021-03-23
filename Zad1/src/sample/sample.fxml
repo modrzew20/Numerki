@@ -23,10 +23,10 @@
             <RowConstraints maxHeight="130.4" minHeight="0.0" prefHeight="57.6" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="342.8" minHeight="10.0" prefHeight="79.4" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="83.79999999999998" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="66.60000000000002" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="69.40000000000003" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="70.60000000000002" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="371.3999923706055" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="377.2" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -35,7 +35,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="result03" prefHeight="31.0" prefWidth="221.0" text="WARIANT 03 :  " GridPane.rowIndex="2">
+            <Label fx:id="result03" alignment="TOP_LEFT" prefHeight="151.0" prefWidth="355.0" text="WARIANT 03 :  " wrapText="true" GridPane.rowIndex="2">
                <font>
                   <Font size="13.0" />
                </font></Label>
@@ -51,11 +51,11 @@
             </Label>
             <Label fx:id="iter02" text="WARIANT 02 :  " GridPane.rowIndex="5">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font></Label>
-            <Label text="WARIANT 03 :  " GridPane.rowIndex="6">
+            <Label fx:id="iter03" alignment="TOP_LEFT" prefHeight="101.0" prefWidth="283.0" text="WARIANT 03 :  " wrapText="true" GridPane.rowIndex="6">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font></Label>
          </children>
       </GridPane>
