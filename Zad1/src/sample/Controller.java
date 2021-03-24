@@ -32,11 +32,8 @@ public class Controller {
         Siecznych siecznychMethod = new Siecznych();
         double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
-        x = String.format("%.7f", i);
-        putSinglePoint("2. Wynik metody Newtona", x, ChoiceWindow.m.pattern(i));
-
-
-
+        //x = Double.toString(i);
+        putSinglePoint("2. Wynik metody Siecznych", i, ChoiceWindow.m.pattern(i));
         iter02.setText(iter02.getText()+ Siecznych.it);
         result02.setText(result02.getText() + i);
 
@@ -44,8 +41,8 @@ public class Controller {
         i = falsiMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
         if(Falsi.validationCheck) {
-            x=String.format("%.7f", i);
-            putSinglePoint("3. Wynik metody Falsi", x, ChoiceWindow.m.pattern(i));
+            //x = Double.toString(i);
+            putSinglePoint("3. Wynik metody Falsi", i, ChoiceWindow.m.pattern(i));
             iter03.setText(iter03.getText()+Falsi.it);
             result03.setText(result03.getText() + i);
         } else {
@@ -54,10 +51,11 @@ public class Controller {
         }
     }
 
-    private void putSinglePoint(String nameOfThePoint, String x, double y) {
-        XYChart.Series series = new XYChart.Series();
-        series.setName(nameOfThePoint + " [" + x + " ; " + y + " ]");
-        series.getData().add(new XYChart.Data(x,y));
-        lineChart.getData().add(series);
+    private void putSinglePoint(String nameOfThePoint, double x, double f_x) {
+        XYChart.Series newSeries = new XYChart.Series();
+        String xString = String.format("%.2f", x);
+        newSeries.setName(nameOfThePoint + " [" + x + " ; " + f_x + " ]");
+        newSeries.getData().add(new XYChart.Data(xString, f_x));
+        lineChart.getData().add(newSeries);
     }
 }
