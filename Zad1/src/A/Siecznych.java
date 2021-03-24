@@ -8,6 +8,7 @@ public class Siecznych implements Wariant {
 
     @Override
     public double compute(double epsilon, double od, double dok, int iteration, byte way) {
+        it = 1;
         double x0 = od;
         double x1 = dok;
         double x = ((ChoiceWindow.m.pattern(x1)*x0-ChoiceWindow.m.pattern(x0)*x1))/(ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0));
