@@ -2,15 +2,23 @@ package A;
 
 import sample.ChoiceWindow;
 
+import static sample.Controller.sign;
+
 public class Siecznych implements Wariant {
 
     static public int it = 1;
+    static public boolean validationCheck = true;
+
 
     @Override
     public double compute(double epsilon, double od, double dok, int iteration, byte way) {
         it = 1;
         double x0 = od;
         double x1 = dok;
+
+        if(sign(ChoiceWindow.m.pattern(od)) == sign(ChoiceWindow.m.pattern(dok))) validationCheck = false;
+        else validationCheck = true;
+
         double x = ((ChoiceWindow.m.pattern(x1)*x0-ChoiceWindow.m.pattern(x0)*x1))/(ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0));
         // x1-((ChoiceWindow.m.pattern(x1)*(x1-x0))/(ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0)));
         do {

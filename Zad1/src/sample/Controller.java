@@ -33,9 +33,17 @@ public class Controller {
         double i = siecznychMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
 
         //x = Double.toString(i);
-        putSinglePoint("2. Wynik metody Siecznych", i, ChoiceWindow.m.pattern(i));
-        iter02.setText(iter02.getText()+ Siecznych.it);
-        result02.setText(result02.getText() + i);
+
+        if(siecznychMethod.validationCheck) {
+            putSinglePoint("2. Wynik metody Siecznych", i, ChoiceWindow.m.pattern(i));
+            iter02.setText(iter02.getText() + Siecznych.it);
+            result02.setText(result02.getText() + i);
+        }else {
+            iter03.setText(iter02.getText() + "Niespełniono założenia\no przeciwnych znakach\nfunkcji na krańcach\nbadanego przedziału");
+            result03.setText(result02.getText() + "Niespełniono założenia\no przeciwnych znakach\nfunkcji na krańcach\nbadanego przedziału");
+
+        }
+
 
         Falsi falsiMethod = new Falsi();
         i = falsiMethod.compute(ChoiceWindow.dokladnosc,ChoiceWindow.od, ChoiceWindow.dok,ChoiceWindow.iteracje,ChoiceWindow.which);
@@ -57,5 +65,9 @@ public class Controller {
         newSeries.setName(nameOfThePoint + " [" + x + " ; " + f_x + " ]");
         newSeries.getData().add(new XYChart.Data(xString, f_x));
         lineChart.getData().add(newSeries);
+    }
+
+    public static int sign(double a) {
+        return (a >= 0 ? 1 : -1);
     }
 }

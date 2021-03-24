@@ -1,6 +1,9 @@
 package A;
 
 import sample.ChoiceWindow;
+import sample.Controller;
+
+import static sample.Controller.sign;
 
 public class Falsi implements Wariant{
 
@@ -31,10 +34,6 @@ public class Falsi implements Wariant{
             it++;
         } while (way == 3 && Math.abs(x - px) > epsilon || way == 4 && Math.abs(ChoiceWindow.m.pattern(x)) > epsilon || way == 2 && it != iteration);
         return x;
-    }
-
-    private int sign(double a) {
-        return (a >= 0 ? 1 : -1);
     }
 
     private double linearEquationResult(double a, double b) {
