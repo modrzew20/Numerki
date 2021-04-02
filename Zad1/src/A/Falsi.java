@@ -33,6 +33,8 @@ public class Falsi implements Wariant{
             else b = x;
             it++;
         } while (way == 3 && Math.abs(x - px) > epsilon || way == 4 && Math.abs(ChoiceWindow.m.pattern(x)) > epsilon || way == 2 && it != iteration);
+        System.out.println(" Ostatni zakres Falsi: [" + a +",  "+ b + "]");
+
         return x;
     }
 

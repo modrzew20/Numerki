@@ -19,12 +19,15 @@ public class Siecznych implements Wariant {
         if(sign(ChoiceWindow.m.pattern(od)) == sign(ChoiceWindow.m.pattern(dok))) validationCheck = false;
         else validationCheck = true;
 
-        double x = ((ChoiceWindow.m.pattern(x1)*x0-ChoiceWindow.m.pattern(x0)*x1))/(ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0));
+        double x = ((ChoiceWindow.m.pattern(x1)*x0-ChoiceWindow.m.pattern(x0)*x1))/
+                (ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0));
         // x1-((ChoiceWindow.m.pattern(x1)*(x1-x0))/(ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0)));
         do {
             x0=x1;
             x1=x;
-            if(ChoiceWindow.m.pattern(x1) != ChoiceWindow.m.pattern(x0)) x = ((ChoiceWindow.m.pattern(x1)*x0-ChoiceWindow.m.pattern(x0)*x1))/(ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0));
+            if(ChoiceWindow.m.pattern(x1) != ChoiceWindow.m.pattern(x0))
+                x = ((ChoiceWindow.m.pattern(x1)*x0-ChoiceWindow.m.pattern(x0)*x1))/
+                        (ChoiceWindow.m.pattern(x1)-ChoiceWindow.m.pattern(x0));
             else {
                 System.out.println("Nie da się osiągnąć większego przybliżenia");
                 way = 2;
@@ -32,6 +35,7 @@ public class Siecznych implements Wariant {
             }
             it++;
         } while (way==3 && Math.abs(x-x1)>epsilon || way==4 && Math.abs(ChoiceWindow.m.pattern(x)) > epsilon || way==2 && it!=iteration );
+        System.out.println(" Ostatni zakres Siecznych: [" + x0 +",  "+ x1  + "]");
         return x;
     }
 }
