@@ -1,15 +1,22 @@
 import pandas as pd
 import copy
 
+
 from numpy import double
 
 
-def checkMatrix(matrix):
-    for i in range(len(matrix)):
-        if matrix[i][i] == 0:
-            print("matrix A has zeros on its main diagonal.")
+
+def checkMatrix(file):
+    matrixA = [[0] * (len(file[0]) - 1) for i in range(len(file))]
+    for row in range(len(file)):
+        for column in range(len(file[0]) - 1):
+            matrixA[row][column] = file[row][column]
+    for i in range(len(matrixA)):
+        if matrixA[i][i] == 0:
             return False
-    return True
+    if len(file) < len(file[0])-1:
+        return False
+    return matrixA
 
 def multi_matrix(firstmatrix, secondmatrix):
     resultmatrix = [[0] * (len(firstmatrix[0])) for i in range(len(firstmatrix))]
@@ -20,20 +27,7 @@ def multi_matrix(firstmatrix, secondmatrix):
     return resultmatrix
 
 
-filee = pd.read_csv("C:\\Users\\kot\\PycharmProjects\\pythonProject\\wspolczyniki", header=None)
-file = filee.values.tolist()
-
-for row in range(len(file)):
-    for column in range(len(file[0])):
-        file[row][column] = double(file[row][column])
-
-print(file)
-matrixA = [[0] * (len(file[0]) - 1) for i in range(len(file))]
-for row in range(len(file)):
-    for column in range(len(file[0]) - 1):
-        matrixA[row][column] = file[row][column]
-
-if checkMatrix(matrixA):
+def count(digit,way,file,matrixA):
     matrixB = [0] * len(file)
     for row in range(len(file)):
         matrixB[row] = file[row][len(file[0]) - 1]
@@ -53,20 +47,18 @@ if checkMatrix(matrixA):
 
     previousresultx = [1] * len(file)
     resultx = [0] * len(file)
-    iteration = 10
-    precision = 0.001
-    way = False
-
     #way
     #false - difference between result and previous result
     #true - iteration
-
-    while (abs(resultx[0] - previousresultx[0])) > precision and not way or iteration != 0 and way:
-        iteration -= 1
+    iteration=0
+    while (abs(resultx[0] - previousresultx[0])) > digit and not way or digit != 0 and way:
+        iteration+=1
+        if way:
+            digit -= 1
         for i in range(len(resultx)):
             previousresultx[i] = resultx[i]
         for i in range(len(resultx)):
             resultx[i] = matrixN[i][i] * matrixB[i]
             for j in range(len(resultx)):
                 resultx[i] += matrixM[i][j] * previousresultx[j]
-    print(resultx)
+    return resultx,iteration
