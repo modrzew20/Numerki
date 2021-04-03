@@ -1,10 +1,4 @@
-import pandas as pd
 import copy
-
-
-from numpy import double
-
-
 
 def checkMatrix(file):
     matrixA = [[0] * (len(file[0]) - 1) for i in range(len(file))]
@@ -51,14 +45,25 @@ def count(digit,way,file,matrixA):
     #false - difference between result and previous result
     #true - iteration
     iteration=0
+    filewrite = open("./results.csv", "a")
+    filewrite.write("Iteration,x1,x2,x3,x4\n")
     while (abs(resultx[0] - previousresultx[0])) > digit and not way or digit != 0 and way:
+
         iteration+=1
         if way:
             digit -= 1
+        filewrite.write(str(iteration)+",")
+        
         for i in range(len(resultx)):
             previousresultx[i] = resultx[i]
         for i in range(len(resultx)):
             resultx[i] = matrixN[i][i] * matrixB[i]
             for j in range(len(resultx)):
                 resultx[i] += matrixM[i][j] * previousresultx[j]
+        for i in range(len(resultx)):
+            if i == 3:
+                filewrite.write(str(resultx[i]) + "\n")
+            else:
+                filewrite.write(str(resultx[i]) + ",")
+    filewrite.close()
     return resultx,iteration
