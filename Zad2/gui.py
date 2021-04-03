@@ -1,6 +1,4 @@
 
-import os
-
 import pandas as pd
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -60,7 +58,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setObjectName("lineEditdigit")
 
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(120, 110, 400, 300))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(50, 100, 500, 300))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -108,7 +106,7 @@ class Ui_MainWindow(object):
                 if j == (len(file[0]) * 2) - 2:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
                     label.setText("=" + str(file[i][k]))
-                    label.setStyleSheet("text-align: center;")
+                    label.setStyleSheet("text-align: center; font-size:15px")
                     self.gridLayout.addWidget(label, i, j, 1, 1)
                 elif j % 2 == 0:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -116,13 +114,13 @@ class Ui_MainWindow(object):
                     if file[i][k] >= 0:
                         text = "+"
                     label.setText(text + str(file[i][k]))
-                    label.setStyleSheet("text-align: center;")
+                    label.setStyleSheet("text-align: center; font-size:15px")
                     self.gridLayout.addWidget(label, i, j, 1, 1)
                     k += 1
                 else:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
                     label.setText(" x" + str(k))
-                    label.setStyleSheet("text-align: center;")
+                    label.setStyleSheet("text-align: center; font-size:15px")
                     self.gridLayout.addWidget(label, i, j, 1, 1)
             k = 0
 
