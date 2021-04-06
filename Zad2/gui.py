@@ -71,7 +71,6 @@ class Ui_MainWindow(object):
 
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setGeometry(QtCore.QRect(210, 110, 171, 211))
-        #self.widget.setStyleSheet("")
         self.widget.setObjectName("widget")
 
         self.widget_2 = QtWidgets.QWidget(self.centralwidget)
@@ -94,7 +93,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Load from file "))
-       # self.pushButton_4.setText(_translate("MainWindow", ""))
         self.pushButton_3.setText(_translate("MainWindow", "xn-xn-1<E"))
         self.pushButton_2.setText(_translate("MainWindow", "Iteration"))
         self.label.setText(_translate("MainWindow", "Load matrix from file!"))
@@ -105,7 +103,7 @@ class Ui_MainWindow(object):
             for j in range((len(file[0]) * 2) - 1):
                 if j == (len(file[0]) * 2) - 2:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
-                    label.setText("=" + str(file[i][k]))
+                    label.setText("= " + str(file[i][k]))
                     label.setStyleSheet("text-align: center; font-size:15px")
                     self.gridLayout.addWidget(label, i, j, 1, 1)
                 elif j % 2 == 0:
@@ -129,15 +127,13 @@ class Ui_MainWindow(object):
         filee = pd.read_csv(filename[0], header=None,dtype = float)
         global file
         file = filee.values.tolist()
-        for row in range(len(file)):
-            for column in range(len(file[0])):
-                file[row][column] = file[row][column]
+        file = change(file)
         global matrixA
         matrixA = checkMatrix(file)
         if matrixA == False:
             self.label.setText("Matrix has zeros on its main diagonal \n or not enough number of equations ")
         else:
-            self.widget.setVisible(False);
+            self.widget.setVisible(False)
             self.label.setText("Matrix is correct")
             self.creategrid()
             self.pushButton_2.setDisabled(False)
@@ -165,14 +161,6 @@ class Ui_MainWindow(object):
         self.pushButton_2.setVisible(False)
         self.pushButton_3.setVisible(False)
 
-    # def restart_program(self):
-    #     global file
-    #     global matrixA
-    #     file = 0
-    #     matrixA = 0
-    #     python = sys.executable
-    #     os.execl(python, python, *sys.argv)
-
 
 if __name__ == "__main__":
     import sys
@@ -190,7 +178,7 @@ if __name__ == "__main__":
                              "background:url(./images/profesor.jpg);\n"
                              "border-radius:10px;\n"
                              "}\n"
-                             "\n"
+                        
                              "QPushButton \n"
                              "{\n"
                              "    background: #f3f0f1;\n"
