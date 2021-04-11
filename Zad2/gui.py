@@ -37,13 +37,6 @@ class Ui_MainWindow(object):
         self.pushButton_3.clicked.connect(self.countbyprecision)
         self.pushButton_3.setDisabled(True)
 
-        # self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        # self.pushButton_4.setGeometry(QtCore.QRect(520, 40, 50, 50))
-        # self.pushButton_4.setStyleSheet("border-radius:20px;background:url(./images/icon.jpg);")
-        # self.pushButton_4.setObjectName("pushButton_4")
-        # self.pushButton_4.clicked.connect(self.restart_program)
-
-
         self.label = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
         font.setFamily("Verdana")
@@ -58,7 +51,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setObjectName("lineEditdigit")
 
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(50, 100, 500, 300))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(25, 100, 550, 300))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -99,12 +92,16 @@ class Ui_MainWindow(object):
 
     def creategrid(self):
         k = 0
+        font = QtGui.QFont()
+        font.setPointSize(20-(len(file[0])+4))
+
         for i in range(len(file)):
             for j in range((len(file[0]) * 2) - 1):
                 if j == (len(file[0]) * 2) - 2:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
                     label.setText("= " + str(file[i][k]))
-                    label.setStyleSheet("text-align: center; font-size:15px")
+                    label.setStyleSheet("text-align: center")
+                    label.setFont(font)
                     self.gridLayout.addWidget(label, i, j, 1, 1)
                 elif j % 2 == 0:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -112,13 +109,15 @@ class Ui_MainWindow(object):
                     if file[i][k] >= 0:
                         text = "+"
                     label.setText(text + str(file[i][k]))
-                    label.setStyleSheet("text-align: center; font-size:15px")
+                    label.setStyleSheet("text-align: center")
+                    label.setFont(font)
                     self.gridLayout.addWidget(label, i, j, 1, 1)
                     k += 1
                 else:
                     label = QtWidgets.QLabel(self.gridLayoutWidget)
                     label.setText(" x" + str(k))
-                    label.setStyleSheet("text-align: center; font-size:15px")
+                    label.setFont(font)
+                    label.setStyleSheet("text-align: center")
                     self.gridLayout.addWidget(label, i, j, 1, 1)
             k = 0
 
@@ -144,10 +143,12 @@ class Ui_MainWindow(object):
     def countbyiteration(self):
         result, iteration = count(int(self.lineEdit.text()), True, file, matrixA)
         self.setresult(result, iteration)
+        self.label.setVisible(False)
 
     def countbyprecision(self):
         result, iteration = count(float(self.lineEdit.text()), False, file, matrixA)
         self.setresult(result, iteration)
+        self.label.setVisible(False)
 
     def setresult(self, result, iteration):
         text = ""
