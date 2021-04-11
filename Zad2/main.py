@@ -18,14 +18,27 @@ def change(file):
     for i in range(len(file)):
         if file[i][i] == 0:
             j = 0
-            while(j < len(file)):
+            while (j < len(file)):
                 if file[j][i] != 0:
                     m = file[i]
                     file[i] = file[j]
                     file[j] = m
-                    j=len(file)
+                    j = len(file)
                 j += 1
     return file
+
+
+def check_convergence(matrix):
+    sum = 0
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            sum += abs(matrix[i][j])
+        sum = sum - abs(matrix[i][i])
+        if matrix[i][i] < sum:
+            print(sum)
+            return False
+        sum=0
+    return True
 
 
 def multi_matrix(firstmatrix, secondmatrix):
@@ -38,7 +51,6 @@ def multi_matrix(firstmatrix, secondmatrix):
 
 
 def count(digit, way, file, matrixA):
-
     matrixB = [0] * len(file)
     for row in range(len(file)):
         matrixB[row] = file[row][len(file[0]) - 1]
@@ -64,15 +76,13 @@ def count(digit, way, file, matrixA):
     iteration = 0
     filewrite = open("./results.csv", "a")
 
-
     filewrite.write("\nNOWA\n")
-
 
     while (abs(sum(resultx) - sum(previousresultx)) / len(previousresultx)) > digit and not way or digit != 0 and way:
         iteration += 1
         if way:
             digit -= 1
-        filewrite.write("\n" +str(iteration) + ",")
+        filewrite.write("\n" + str(iteration) + ",")
 
         for i in range(len(resultx)):
             previousresultx[i] = resultx[i]
@@ -86,7 +96,6 @@ def count(digit, way, file, matrixA):
                 filewrite.write(str(resultx[i]) + "\n")
             else:
                 filewrite.write(str(resultx[i]) + ",")
-
 
     filewrite.close()
     return resultx, iteration

@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -10,8 +9,6 @@ from main import *
 class Ui_MainWindow(object):
     file = 0
     matrixA = 0
-
-
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -93,7 +90,7 @@ class Ui_MainWindow(object):
     def creategrid(self):
         k = 0
         font = QtGui.QFont()
-        font.setPointSize(20-(len(file[0])+4))
+        font.setPointSize(20 - (len(file[0]) + 4))
 
         for i in range(len(file)):
             for j in range((len(file[0]) * 2) - 1):
@@ -123,14 +120,17 @@ class Ui_MainWindow(object):
 
     def openfile(self):
         filename = QFileDialog.getOpenFileName()
-        filee = pd.read_csv(filename[0], header=None,dtype = float)
+        filee = pd.read_csv(filename[0], header=None, dtype=float)
         global file
         file = filee.values.tolist()
         file = change(file)
         global matrixA
         matrixA = checkMatrix(file)
-        if matrixA == False:
+        convergence = check_convergence(matrixA)
+        if not matrixA:
             self.label.setText("Matrix has zeros on its main diagonal \n or not enough number of equations ")
+        elif not convergence:
+            self.label.setText("Macierz nie jest przekątniowo dominujaca")
         else:
             self.widget.setVisible(False)
             self.label.setText("Matrix is correct")
@@ -138,7 +138,6 @@ class Ui_MainWindow(object):
             self.pushButton_2.setDisabled(False)
             self.pushButton_3.setDisabled(False)
             self.pushButton.setVisible(False)
-
 
     def countbyiteration(self):
         result, iteration = count(int(self.lineEdit.text()), True, file, matrixA)
@@ -154,9 +153,12 @@ class Ui_MainWindow(object):
         text = ""
         for i in range(len(result)):
             text += "x" + str(i + 1) + " = " + str(result[i]) + "\n"
-        text+="\nIteration: "+ str(iteration)
+        text += "\nIteration: " + str(iteration)
         self.gridLayoutWidget.setVisible(False)
         self.widget_2.setVisible(True)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_3.setFont(font)
         self.label_3.setText(text)
         self.lineEdit.setVisible(False)
         self.pushButton_2.setVisible(False)
@@ -179,7 +181,7 @@ if __name__ == "__main__":
                              "background:url(./images/profesor.jpg);\n"
                              "border-radius:10px;\n"
                              "}\n"
-                        
+
                              "QPushButton \n"
                              "{\n"
                              "    background: #f3f0f1;\n"
