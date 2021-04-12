@@ -81,11 +81,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Load from file "))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Zad 2 Daniel Modrzejewski, Mateusz Srebnik"))
+        self.pushButton.setText(_translate("MainWindow", "Wczytaj plik"))
         self.pushButton_3.setText(_translate("MainWindow", "xn-xn-1<E"))
-        self.pushButton_2.setText(_translate("MainWindow", "Iteration"))
-        self.label.setText(_translate("MainWindow", "Load matrix from file!"))
+        self.pushButton_2.setText(_translate("MainWindow", "Iteracje"))
+        self.label.setText(_translate("MainWindow", "Wczytaj z pliku!"))
 
     def creategrid(self):
         k = 0
@@ -128,12 +128,12 @@ class Ui_MainWindow(object):
         matrixA = checkMatrix(file)
         convergence = check_convergence(matrixA)
         if not matrixA:
-            self.label.setText("Matrix has zeros on its main diagonal \n or not enough number of equations ")
+            self.label.setText("Macierz ma zera na przekatnej \nlub nie jest to macierz o wymiarze NxN")
         elif not convergence:
-            self.label.setText("Macierz nie jest przekątniowo dominujaca")
+            self.label.setText("Macierz nie jest przekątniowo \ndominujaca")
         else:
             self.widget.setVisible(False)
-            self.label.setText("Matrix is correct")
+            self.label.setText("Macierz spełnia warunki")
             self.creategrid()
             self.pushButton_2.setDisabled(False)
             self.pushButton_3.setDisabled(False)
@@ -153,7 +153,7 @@ class Ui_MainWindow(object):
         text = ""
         for i in range(len(result)):
             text += "x" + str(i + 1) + " = " + str(result[i]) + "\n"
-        text += "\nIteration: " + str(iteration)
+        text += "\nIlość iteracji: " + str(iteration)
         self.gridLayoutWidget.setVisible(False)
         self.widget_2.setVisible(True)
         font = QtGui.QFont()

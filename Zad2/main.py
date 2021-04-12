@@ -34,7 +34,7 @@ def check_convergence(matrix):
         for j in range(len(matrix[0])):
             sum += abs(matrix[i][j])
         sum = sum - abs(matrix[i][i])
-        if matrix[i][i] < sum:
+        if matrix[i][i] <= sum:
             print(sum)
             return False
         sum=0
