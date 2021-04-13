@@ -129,11 +129,12 @@ class Ui_MainWindow(object):
         convergence = check_convergence(matrixA)
         if not matrixA:
             self.label.setText("Macierz ma zera na przekatnej \nlub nie jest to macierz o wymiarze NxN")
-        elif not convergence:
-            self.label.setText("Macierz nie jest przekątniowo \ndominujaca")
         else:
             self.widget.setVisible(False)
-            self.label.setText("Macierz spełnia warunki")
+            if not convergence:
+                self.label.setText("Macierz nie jest przekątniowo \ndominujaca")
+            else :
+                self.label.setText("Macierz spełnia warunki")
             self.creategrid()
             self.pushButton_2.setDisabled(False)
             self.pushButton_3.setDisabled(False)

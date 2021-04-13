@@ -67,9 +67,9 @@ def count(digit, way, file, matrixA):
     for row in range(len(matrixM)):
         for column in range(len(matrixM[0])):
             matrixM[row][column] = -1 * matrixM[row][column]
-    previousresultx = [1] * len(file)
+    previousresultx = [0] * len(file)
     resultx = [0] * len(file)
-
+    d = 10
     # way
     # false - difference between result and previous result
     # true - iteration
@@ -78,7 +78,7 @@ def count(digit, way, file, matrixA):
 
     filewrite.write("\nNOWA\n")
 
-    while (abs(sum(resultx) - sum(previousresultx)) / len(previousresultx)) > digit and not way or digit != 0 and way:
+    while d > digit and not way or digit != 0 and way:
         iteration += 1
         if way:
             digit -= 1
@@ -96,6 +96,9 @@ def count(digit, way, file, matrixA):
                 filewrite.write(str(resultx[i]) + "\n")
             else:
                 filewrite.write(str(resultx[i]) + ",")
+        d = 0
+        for i in range(len(resultx)):
+            d += abs(resultx[i]-previousresultx[i])/ len(previousresultx)
 
     filewrite.close()
     return resultx, iteration
