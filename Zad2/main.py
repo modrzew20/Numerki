@@ -1,6 +1,8 @@
 import copy
 
 
+###########################     SPRAWDZENIE MACIERZY POD KATEM WYSTEPOWANIA 0 NA PRZEKATNEJ I ROZMIAR   ###############################
+
 def checkMatrix(file):
     if len(file) < len(file[0]) - 1:
         return False
@@ -13,7 +15,7 @@ def checkMatrix(file):
             matrixA[row][column] = file[row][column]
     return matrixA
 
-
+########################################     ZAMIANA WIERSZY   ################################################
 def change(file):
     for i in range(len(file)):
         if file[i][i] == 0:
@@ -27,6 +29,7 @@ def change(file):
                 j += 1
     return file
 
+###########################     SPRAWDZENIE CZY MACIERZ JEST PRZEKATNIE DOMINUJACA   ###############################
 
 def check_convergence(matrix):
     sum = 0
@@ -34,12 +37,12 @@ def check_convergence(matrix):
         for j in range(len(matrix[0])):
             sum += abs(matrix[i][j])
         sum = sum - abs(matrix[i][i])
-        if matrix[i][i] < sum:
-            print(sum)
+        if matrix[i][i] <= sum:
             return False
         sum=0
     return True
 
+###########################     MNOZENIE MACIERZY   ###############################
 
 def multi_matrix(firstmatrix, secondmatrix):
     resultmatrix = [[0] * (len(firstmatrix[0])) for i in range(len(firstmatrix))]
@@ -49,6 +52,9 @@ def multi_matrix(firstmatrix, secondmatrix):
                 resultmatrix[i][j] += firstmatrix[i][k] * secondmatrix[k][j]
     return resultmatrix
 
+
+
+###########################    ALGORYTM    ###############################
 
 def count(digit, way, file, matrixA):
     matrixB = [0] * len(file)
@@ -67,9 +73,9 @@ def count(digit, way, file, matrixA):
     for row in range(len(matrixM)):
         for column in range(len(matrixM[0])):
             matrixM[row][column] = -1 * matrixM[row][column]
-    previousresultx = [1] * len(file)
+    previousresultx = [0] * len(file)
     resultx = [0] * len(file)
-
+    d = 10
     # way
     # false - difference between result and previous result
     # true - iteration
@@ -78,7 +84,7 @@ def count(digit, way, file, matrixA):
 
     filewrite.write("\nNOWA\n")
 
-    while (abs(sum(resultx) - sum(previousresultx)) / len(previousresultx)) > digit and not way or digit != 0 and way:
+    while d > digit and not way or digit != 0 and way:
         iteration += 1
         if way:
             digit -= 1
@@ -96,6 +102,9 @@ def count(digit, way, file, matrixA):
                 filewrite.write(str(resultx[i]) + "\n")
             else:
                 filewrite.write(str(resultx[i]) + ",")
+        d = 0
+        for i in range(len(resultx)):
+            d += abs(resultx[i]-previousresultx[i])/ len(previousresultx)
 
     filewrite.close()
     return resultx, iteration
