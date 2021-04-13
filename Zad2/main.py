@@ -82,13 +82,12 @@ def count(digit, way, file, matrixA):
     iteration = 0
     filewrite = open("./results.csv", "a")
 
-    filewrite.write("\nNOWA\n")
 
     while d > digit and not way or digit != 0 and way:
         iteration += 1
         if way:
             digit -= 1
-        filewrite.write("\n" + str(iteration) + ",")
+        filewrite.write("\n" + str(iteration))
 
         for i in range(len(resultx)):
             previousresultx[i] = resultx[i]
@@ -99,12 +98,12 @@ def count(digit, way, file, matrixA):
                 resultx[i] += matrixM[i][j] * previousresultx[j]
         for i in range(len(resultx)):
             if i == len(resultx):
-                filewrite.write(str(resultx[i]) + "\n")
+                filewrite.write(str(round(resultx[i],3)) + "\n")
             else:
-                filewrite.write(str(resultx[i]) + ",")
+                filewrite.write( " & " + str(round(resultx[i],4)))
         d = 0
         for i in range(len(resultx)):
-            d += abs(resultx[i]-previousresultx[i])/ len(previousresultx)
-
+            d += abs(resultx[i]-previousresultx[i])
+            d = d/len(previousresultx)
     filewrite.close()
     return resultx, iteration

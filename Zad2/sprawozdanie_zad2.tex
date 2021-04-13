@@ -43,25 +43,55 @@ Celem zadania drugiego jest zaimplementowanie programu mającego na celu  rozwi�
 }
 
 \section{Wprowadzenie}
-{\color{blue}
-We wprowadzeniu należy zaprezentować niezbędną teorię potrzebną do realizacji
-zadania (przy czym należy tu ograniczyć się wyłącznie do tego, co było
-wykorzystane), tak aby inny student, który nigdy wcześniej nie zetknął się z tą
-tematyką, potrafił zrozumieć dalszy opis. Część ta powinna wprowadzać wszystkie
-wykorzystywane wzory, oznaczenia itp., do których należy się odwoływać w
-dalszej części niniejszego sprawozdania. Zamieszczony tu własny opis teorii
-(a nie skopiowany!) należy poprzeć odwołaniami bibliograficznymi do literatury
-zamieszczonej na końcu.}
+{
+
+Metoda pozwala na obliczenie układu N równań liniowych z N niewiadomymi. Przybliżonym wynikiem układu równań bedzie wektor x . Na poczatku wektor bedzie zawierał same 0, z każdą nastepna iteracja algorytmu Jackobiego bedzie on przybliżał sie do prawidłowego wyniku. W tym celu korzystamy ze wzoru \n
+
+x^{n+1} = Mx^{n} +NB
+
+gdzie 
+
+x^{n+1} - wynik iteracji algorytmu 
+x^{n} - wynik poprzedniej iteracji algorytmu 
+
+A - to macierz współczynników Ax=B
+B - to macierz wyników rownań
+N - D^{-1} , gdzie D jest macierzą skladajaca sie z elementów głównej przekatnej macierzy A
+
+M - to wynik -N(L+U), gdzie (L+U) to macierz A z zastapionymi wartosciami 0 na głowej przekątnej \n
+
+mozemy zapisac, że \n
+A = L + U + D
+}
 
 \section{Opis implementacji}
-{\color{blue}
-Należy tu zamieścić krótki i zwięzły opis zaprojektowanych klas oraz powiązań
-między nimi. Często powinien się tu również znaleźć diagram UML (diagram klas)
-prezentujący najistotniejsze elementy stworzonej aplikacji. Należy także podać,
-w jakim języku programowania została stworzona aplikacja.}
+{
+Program został napisany w jezyku Python, składa sie z dwóch klas. Klasa main odpowiada za backendowa część programu , a klasa gui na frontendowa.
+Klasa main zawiera w sobie funkcje:
+- sprawdzająca czy podana macierz ma odpowiedni rozmiar oraz czy ma 0 na przekatnych,
+- zmiana kolejnosci wierszy
+- sprawdzenie czy macierz jest przekatnie dominujaca 
+- mnożenie macierzy
+- algorytm 
+}
 
 \section{Materiały i metody}
-{\color{blue}
+{
+Badania zostały przeprowadzone dla 5 macierzy , 3 przekątnie dominujących oraz 2 nie przekątnie dominujacych (nieoznaczonej i sprzecznej)
+Badania:
+1. Macierz przekątnie dominująca 
+$$
+\mathbf{X} =
+\left| \begin{array}{ccc}
+0 & 1 &  0 \\
+0 & 0 &  1 \\
+1 & 0 &  0 \\
+\end{array} \right|
+$$
+
+
+
+
 W tym miejscu należy opisać, jak przeprowadzone zostały wszystkie badania,
 których wyniki i dyskusja zamieszczane są w dalszych sekcjach. Opis ten
 powinien być na tyle dokładny, aby osoba czytająca go potrafiła wszystkie
@@ -105,8 +135,9 @@ tak jak poprzednio, najistotniejsze są wnioski o charakterze uniwersalnym.}
     online. \url{https://ctan.org/tex-archive/info/lshort/polish/lshort2e.pdf}.
 \end{thebibliography}
 
-{\color{blue}
-Na końcu należy obowiązkowo podać cytowaną w sprawozdaniu literaturę, z której
-grupa korzystała w trakcie prac nad zadaniem.}
+{
+https://college.cengage.com/mathematics/larson/elementary_linear/5e/students/ch08-10/chap_10_2.pdf
+http://www.algorytm.org/procedury-numeryczne/metoda-jacobiego.html
+}
 
 \end{document}
