@@ -1,6 +1,8 @@
 import copy
 
 
+###########################     SPRAWDZENIE MACIERZY POD KATEM WYSTEPOWANIA 0 NA PRZEKATNEJ I ROZMIAR   ###############################
+
 def checkMatrix(file):
     if len(file) < len(file[0]) - 1:
         return False
@@ -13,7 +15,7 @@ def checkMatrix(file):
             matrixA[row][column] = file[row][column]
     return matrixA
 
-
+########################################     ZAMIANA WIERSZY   ################################################
 def change(file):
     for i in range(len(file)):
         if file[i][i] == 0:
@@ -27,6 +29,7 @@ def change(file):
                 j += 1
     return file
 
+###########################     SPRAWDZENIE CZY MACIERZ JEST PRZEKATNIE DOMINUJACA   ###############################
 
 def check_convergence(matrix):
     sum = 0
@@ -35,11 +38,11 @@ def check_convergence(matrix):
             sum += abs(matrix[i][j])
         sum = sum - abs(matrix[i][i])
         if matrix[i][i] <= sum:
-            print(sum)
             return False
         sum=0
     return True
 
+###########################     MNOZENIE MACIERZY   ###############################
 
 def multi_matrix(firstmatrix, secondmatrix):
     resultmatrix = [[0] * (len(firstmatrix[0])) for i in range(len(firstmatrix))]
@@ -49,6 +52,9 @@ def multi_matrix(firstmatrix, secondmatrix):
                 resultmatrix[i][j] += firstmatrix[i][k] * secondmatrix[k][j]
     return resultmatrix
 
+
+
+###########################    ALGORYTM    ###############################
 
 def count(digit, way, file, matrixA):
     matrixB = [0] * len(file)
