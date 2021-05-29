@@ -33,7 +33,7 @@ public class App extends Application
         for(int i=0; i<functions.length; i++)
         {
             System.out.println(i + ": " + functions[i].name);
-        }/*
+        }
         int number = Integer.parseInt(scan.nextLine());
         function = functions[number];
         System.out.println("Podaj początek rozpatrywanego przedziału:");
@@ -42,11 +42,6 @@ public class App extends Application
         B = Integer.parseInt(scan.nextLine());
         System.out.println("Podaj ilość węzłów Czebyszewa:");
         N = Integer.parseInt(scan.nextLine());
-        */
-        function = functions[0];
-        A = -10;
-        B = 10;
-        N = 3;
         //
         launch(args);
     }
